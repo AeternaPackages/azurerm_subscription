@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_cost_management_exports, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions["${k1}"].id
+        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_cost_management_views, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions["${k1}"].id
+        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
       })
     }
   ]...)
@@ -23,7 +23,7 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_policy_assignments, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions["${k1}"].id
+        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
       })
     }
   ]...)
@@ -32,7 +32,7 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_policy_exemptions, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions["${k1}"].id
+        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
       })
     }
   ]...)
@@ -41,7 +41,7 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_policy_remediations, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions["${k1}"].id
+        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
       })
     }
   ]...)
