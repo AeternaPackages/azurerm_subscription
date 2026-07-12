@@ -1,4 +1,9 @@
 # --- azurerm_subscription ---
+output "subscriptions_id" {
+  description = "Map of id values across all subscriptions, keyed the same as var.subscriptions"
+  value       = module.subscriptions.subscriptions_id
+}
+
 output "subscriptions_alias" {
   description = "Map of alias values across all subscriptions, keyed the same as var.subscriptions"
   value       = module.subscriptions.subscriptions_alias
@@ -35,6 +40,11 @@ output "subscriptions_workload" {
 }
 
 # --- azurerm_subscription_cost_management_export ---
+output "subscription_cost_management_exports_id" {
+  description = "Map of id values across all subscription_cost_management_exports, keyed the same as var.subscription_cost_management_exports"
+  value       = module.subscription_cost_management_exports.subscription_cost_management_exports_id
+}
+
 output "subscription_cost_management_exports_active" {
   description = "Map of active values across all subscription_cost_management_exports, keyed the same as var.subscription_cost_management_exports"
   value       = module.subscription_cost_management_exports.subscription_cost_management_exports_active
@@ -81,6 +91,11 @@ output "subscription_cost_management_exports_subscription_id" {
 }
 
 # --- azurerm_subscription_cost_management_view ---
+output "subscription_cost_management_views_id" {
+  description = "Map of id values across all subscription_cost_management_views, keyed the same as var.subscription_cost_management_views"
+  value       = module.subscription_cost_management_views.subscription_cost_management_views_id
+}
+
 output "subscription_cost_management_views_accumulated" {
   description = "Map of accumulated values across all subscription_cost_management_views, keyed the same as var.subscription_cost_management_views"
   value       = module.subscription_cost_management_views.subscription_cost_management_views_accumulated
@@ -132,6 +147,11 @@ output "subscription_cost_management_views_timeframe" {
 }
 
 # --- azurerm_subscription_policy_assignment ---
+output "subscription_policy_assignments_id" {
+  description = "Map of id values across all subscription_policy_assignments, keyed the same as var.subscription_policy_assignments"
+  value       = module.subscription_policy_assignments.subscription_policy_assignments_id
+}
+
 output "subscription_policy_assignments_description" {
   description = "Map of description values across all subscription_policy_assignments, keyed the same as var.subscription_policy_assignments"
   value       = module.subscription_policy_assignments.subscription_policy_assignments_description
@@ -203,6 +223,11 @@ output "subscription_policy_assignments_subscription_id" {
 }
 
 # --- azurerm_subscription_policy_exemption ---
+output "subscription_policy_exemptions_id" {
+  description = "Map of id values across all subscription_policy_exemptions, keyed the same as var.subscription_policy_exemptions"
+  value       = module.subscription_policy_exemptions.subscription_policy_exemptions_id
+}
+
 output "subscription_policy_exemptions_description" {
   description = "Map of description values across all subscription_policy_exemptions, keyed the same as var.subscription_policy_exemptions"
   value       = module.subscription_policy_exemptions.subscription_policy_exemptions_description
@@ -249,6 +274,11 @@ output "subscription_policy_exemptions_subscription_id" {
 }
 
 # --- azurerm_subscription_policy_remediation ---
+output "subscription_policy_remediations_id" {
+  description = "Map of id values across all subscription_policy_remediations, keyed the same as var.subscription_policy_remediations"
+  value       = module.subscription_policy_remediations.subscription_policy_remediations_id
+}
+
 output "subscription_policy_remediations_failure_percentage" {
   description = "Map of failure_percentage values across all subscription_policy_remediations, keyed the same as var.subscription_policy_remediations"
   value       = module.subscription_policy_remediations.subscription_policy_remediations_failure_percentage
