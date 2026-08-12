@@ -32,7 +32,8 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_policy_exemptions, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
+        subscription_id      = module.subscriptions.subscriptions_id["${k1}"]
+        policy_assignment_id = try(module.subscription_policy_assignments.subscription_policy_assignments_id["${k1}/${v2.policy_assignment_id}"], v2.policy_assignment_id)
       })
     }
   ]...)
@@ -41,7 +42,8 @@ locals {
     for k1, v1 in var.subscriptions : {
       for k2, v2 in coalesce(v1.subscription_policy_remediations, {}) :
       "${k1}/${k2}" => merge(v2, {
-        subscription_id = module.subscriptions.subscriptions_id["${k1}"]
+        subscription_id      = module.subscriptions.subscriptions_id["${k1}"]
+        policy_assignment_id = try(module.subscription_policy_assignments.subscription_policy_assignments_id["${k1}/${v2.policy_assignment_id}"], v2.policy_assignment_id)
       })
     }
   ]...)
@@ -73,12 +75,12 @@ module "subscription_policy_assignments" {
 module "subscription_policy_exemptions" {
   source                         = "git::https://github.com/AeternaModules/azurerm_subscription_policy_exemption.git?ref=v5.0.0"
   subscription_policy_exemptions = local.subscription_policy_exemptions
-  depends_on                     = [module.subscriptions]
+  depends_on                     = [module.subscriptions, module.subscription_policy_assignments]
 }
 
 module "subscription_policy_remediations" {
   source                           = "git::https://github.com/AeternaModules/azurerm_subscription_policy_remediation.git?ref=v5.0.0"
   subscription_policy_remediations = local.subscription_policy_remediations
-  depends_on                       = [module.subscriptions]
+  depends_on                       = [module.subscriptions, module.subscription_policy_assignments]
 }
 
